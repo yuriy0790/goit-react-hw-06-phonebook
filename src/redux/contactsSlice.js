@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const contactsInitialState = [
-  { name: 'Vasia', number: '5556677', id: '5556677' },
-];
+const contactsInitialState = [];
 
 const contactsSlice = createSlice({
   // Ім'я слайсу
