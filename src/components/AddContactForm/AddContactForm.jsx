@@ -1,7 +1,15 @@
-import styles from './AddContactForm.module.css';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Notiflix from 'notiflix';
 
-export default function AddContactForm({ onSubmit }) {
+import styles from './AddContactForm.module.css';
+
+import { addContact } from 'redux/contactsSlice';
+
+export default function AddContactForm() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -25,7 +33,35 @@ export default function AddContactForm({ onSubmit }) {
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit({ name, number });
+    const existingName = contacts.find(
+      el => el.name.toLowerCase() === name.toLowerCase()
+    );
+
+    const existingNumber = contacts.find(el => el.number === number);
+
+    if (existingName) {
+      Notiflix.Notify.failure(`"${name}" is allready in contact list`);
+      return;
+    }
+
+    if (existingNumber) {
+      Notiflix.Notify.failure(
+        `You allready have contact "${existingNumber.name}" with same number "${number}" in contact list`
+      );
+      return;
+    }
+
+    const contact = {
+      id: number,
+      name: name,
+      number: number,
+    };
+    dispatch(addContact(contact));
+
+    Notiflix.Notify.success(
+      `"${contact.name}" successfully added to contact list`
+    );
+
     reset();
   };
 

@@ -9,7 +9,9 @@ const filterSlice = createSlice({
   initialState: filterInitialState,
   // Об'єкт редюсерів
   reducers: {
-    filterContacts(state, action) {},
+    filterContacts(state, { payload }) {
+      return payload;
+    },
   },
 });
 
