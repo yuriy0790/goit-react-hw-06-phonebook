@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import { todosReducer } from './todos/todosSlice';
-// import { filterReducer } from './filterSlice';
-// import { friendsReducer } from './friends/friendsSlice';
+import { contactsReducer } from './contactsSlice';
+import { filterReducer } from './filterSlice';
 
 export const store = configureStore({
   reducer: {
-    // todos: todosReducer,
-    // friends: friendsReducer,
-    // filter: filterReducer,
+    contacts: contactsReducer,
+    filter: filterReducer,
   },
 });
