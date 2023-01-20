@@ -14,6 +14,6 @@ const filterSlice = createSlice({
 });
 
 // Генератори екшенів
-const { filterContacts } = filterSlice.actions;
+export const { filterContacts } = filterSlice.actions;
 // Редюсер слайсу
-const filterReducer = filterSlice.reducer;
+export const filterReducer = filterSlice.reducer;

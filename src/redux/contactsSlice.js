@@ -15,6 +15,6 @@ const contactsSlice = createSlice({
 });
 
 // Генератори екшенів
-const { addContact, deleteContact } = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 // Редюсер слайсу
-const contactsReducer = contactsSlice.reducer;
+export const contactsReducer = contactsSlice.reducer;
